@@ -6,6 +6,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { HiPhoto, HiPaperAirplane } from 'react-icons/hi2';
 import MessageInput from './MessageInput';
 import { CldUploadButton } from 'next-cloudinary';
+import toast from 'react-hot-toast';
 
 const Form = () => {
   const { conversationId } = useConversation();
@@ -22,12 +23,16 @@ const Form = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setValue('message', '', { shouldValidate: true });
+    if (data?.message === '' || data?.message === null || data?.message === undefined) {
+      toast.error('Message is empty')
+    } else {
+      setValue('message', '', { shouldValidate: true });
 
-    axios.post('/api/messages', {
-      ...data,
-      conversationId,
-    });
+      axios.post('/api/messages', {
+        ...data,
+        conversationId,
+      });
+    }
   };
 
   const handleUpload = (result: any) => {
