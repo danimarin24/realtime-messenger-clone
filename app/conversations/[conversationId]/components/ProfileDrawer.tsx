@@ -8,7 +8,7 @@ import { Transition, Dialog } from '@headlessui/react';
 import { IoClose, IoTrash } from 'react-icons/io5';
 import Avatar from '@/app/components/Avatar';
 
-interface ProfileDrwawerProps {
+interface ProfileDrawerProps {
   data: Conversation & {
     users: User[];
   };
@@ -16,7 +16,7 @@ interface ProfileDrwawerProps {
   onClose: () => void;
 }
 
-const ProfileDrwawer: React.FC<ProfileDrwawerProps> = ({
+const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
   data,
   isOpen,
   onClose,
@@ -145,4 +145,4 @@ const ProfileDrwawer: React.FC<ProfileDrwawerProps> = ({
   );
 };
 
-export default ProfileDrwawer;
+export default ProfileDrawer;
