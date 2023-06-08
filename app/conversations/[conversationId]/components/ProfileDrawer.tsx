@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 import useOtherUser from '@/app/hooks/useOtherUser';
 
 import Avatar from '@/app/components/Avatar';
-import Modal from './Modal';
+import ConfirmModal from './ConfirmModal';
 
 interface ProfileDrawerProps {
   data: Conversation & {
@@ -45,11 +45,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
   return (
     <>
-      <Modal isOpen={confirmOpen} onClose={() => setConfirmOpen(false)}>
-        <div className='bg-white p-5'>
-          <p>Hello Modal!</p>
-        </div>
-      </Modal>
+      <ConfirmModal isOpen={confirmOpen} onClose={() => setConfirmOpen(false)} />
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as='div' className='relative z-50' onClose={onClose}>
           <Transition.Child
